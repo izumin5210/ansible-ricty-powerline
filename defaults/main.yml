@@ -6,8 +6,8 @@ ricty_dependencies:
 
 tmp_dir: '/tmp'
 
-inconsolata_regular_path: 'https://github.com/google/fonts/raw/master/ofl/inconsolata/Inconsolata-Regular.ttf'
-inconsolata_bold_path: 'https://github.com/google/fonts/raw/master/ofl/inconsolata/Inconsolata-Bold.ttf'
+inconsolata_regular_url: 'https://github.com/google/fonts/raw/master/ofl/inconsolata/Inconsolata-Regular.ttf'
+inconsolata_bold_url: 'https://github.com/google/fonts/raw/master/ofl/inconsolata/Inconsolata-Bold.ttf'
 
 ricty_url: 'https://github.com/yascentur/Ricty/archive/4.0.1.tar.gz'
 ricty_archive_path: "{{tmp_dir}}/Ricty-4.0.1.tar.gz"
