@@ -19,7 +19,7 @@
 - name: Generate Ricty
   command: ./ricty_generator.sh auto
   args:
-    chdid: "{{ricty_path}}"
+    chdir: "{{ricty_path}}"
 
 - name: Fonts install path
   file: path='{{fonts_install_path}}' state=directory
