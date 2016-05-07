@@ -31,16 +31,16 @@
     chdir: "{{ricty_path}}"
 
 - name: Install Ricty
-  command: "cp {{ricty_path}}/Ricty*.ttf {{fonts_install_path}}"
+  shell: "cp {{ricty_path}}/Ricty*.ttf {{fonts_install_path}}"
 
 - command: fc-cache -vf
 
 - name: Patch Ricty with Powerline
-  command: "fontforge -lang=py -script ./scripts/powerline-fontpatcher {{fonts_install_path}}/Ricty*.ttf"
+  shell: "fontforge -lang=py -script ./scripts/powerline-fontpatcher {{fonts_install_path}}/Ricty*.ttf"
   args:
     chdir: "{{powerline_font_patcher_path}}"
 
 - name: Install Ricty-Powerline
-  command: "cp {{powerline_font_patcher_path}}/Ricty*.ttf {{fonts_install_path}}"
+  shell: "cp {{powerline_font_patcher_path}}/Ricty*.ttf {{fonts_install_path}}"
 
 - command: fc-cache -vf
