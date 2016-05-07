@@ -1,2 +1,20 @@
 ---
 # defaults file for ricty-powerline
+ricty_dependencies:
+  - fontforge
+  - fonts-Inconsolata
+  - fonts-migmix
+
+tmp_dir: 'tmp'
+
+ricty_url: 'https://github.com/yascentur/Ricty/archive/4.0.1.tar.gz'
+ricty_archive_path: "{{tmp_dir}}/Ricty-4.0.1.tar.gz"
+ricty_path: "{{tmp_dir}}/Ricty-4.0.1"
+
+fonts_install_path: "~/.fonts"
+
+powerline_font_patcher_url: 'https://github.com/powerline/fontpatcher/archive/develop.zip'
+powerline_font_patcher_archive_path: "{{tmp_dir}}/fontpatcher-develop.zip"
+powerline_font_patcher_path: "{{tmp_dir}}/fontpatcher-develop"
+
+

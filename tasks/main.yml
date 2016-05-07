@@ -1,2 +1,40 @@
 ---
 # tasks file for ricty-powerline
+
+- name: Install dependencies
+  become: yes
+  apt: name={{item}} update_cache=yes
+  with_items: ricty_dependencies
+
+- name: Get Ricty from GitHub
+  get_url: url={{ricty_url}} dest={{ricty_archive_path}}
+
+- unarchive: src={{ricty_archive_path}} dest={{tmp_dir}}
+
+- name: Get powerline-font-patcher from GitHub
+  get_url: url={{powerline_font_patcher_url}} dest={{powerline_font_patcher_archive_path}}
+
+- unarchive: src={{powerline_font_patcher_archive_path}} dest={{tmp_dir}}
+
+- name: Generate Ricty
+  command: ./ricty_generator.sh auto
+  args:
+    chdid: "{{ricty_path}}"
+
+- name: Fonts install path
+  file: path='{{fonts_install_path}}' state=directory
+
+- name: Install Ricty
+  copy: src="{{ricty_path}}/Ricty*.ttf" dest="{{fonts_install_path}}"
+
+- command: fc-cache -vf
+
+- name: Patch Ricty with Powerline
+  command: "fontforge -lang=py -script ./scripts/powerline-fontpatcher {{fonts_install_path}}/Ricty*.ttf"
+  args:
+    chdir: "{{powerline_font_patcher_path}}"
+
+- name: Install Ricty-Powerline
+  copy: src="{{powerline_font_patcher_path}}/Ricty*.ttf" dest="{{fonts_install_path}}"
+
+- command: fc-cache -vf
