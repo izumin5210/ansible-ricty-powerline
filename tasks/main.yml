@@ -6,6 +6,15 @@
   apt: name={{item}} update_cache=yes
   with_items: ricty_dependencies
 
+- name: Fonts install path
+  file: path='{{fonts_install_path}}' state=directory
+
+- name: Get Inconsolata-Regular
+  get_url: url={{inconsolata_regular_url}} dest="{{fonts_install_path}}/Inconsolata-Regular.ttf"
+
+- name: Get Inconsolata-Bold
+  get_url: url={{inconsolata_bold_url}} dest="{{fonts_install_path}}/Inconsolata-Bold.ttf"
+
 - name: Get Ricty from GitHub
   get_url: url={{ricty_url}} dest={{ricty_archive_path}}
 
@@ -20,9 +29,6 @@
   command: ./ricty_generator.sh auto
   args:
     chdir: "{{ricty_path}}"
-
-- name: Fonts install path
-  file: path='{{fonts_install_path}}' state=directory
 
 - name: Install Ricty
   copy: src="{{ricty_path}}/Ricty*.ttf" dest="{{fonts_install_path}}"
