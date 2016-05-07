@@ -31,7 +31,7 @@
     chdir: "{{ricty_path}}"
 
 - name: Install Ricty
-  copy: src="{{ricty_path}}/Ricty*.ttf" dest="{{fonts_install_path}}"
+  copy: src="{{ricty_path}}/{{ lookup('pipe', 'ls -1 Ricty*.ttf') }}" dest="{{fonts_install_path}}"
 
 - command: fc-cache -vf
 
@@ -41,6 +41,6 @@
     chdir: "{{powerline_font_patcher_path}}"
 
 - name: Install Ricty-Powerline
-  copy: src="{{powerline_font_patcher_path}}/Ricty*.ttf" dest="{{fonts_install_path}}"
+  copy: src="{{powerline_font_patcher_path}}/{{ lookup('pipe', 'ls -1 Ricty*.ttf') }}" dest="{{fonts_install_path}}"
 
 - command: fc-cache -vf
